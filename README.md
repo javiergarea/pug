@@ -3,9 +3,9 @@
 ---
 ![](misc/pug_titlepage.png)
 ---
-![](misc/pug_references.png)
----
 ![](misc/pug_outline.png)
+---
+![](misc/pug_references.png)
 ---
 
 This work is licensed under a
