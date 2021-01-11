@@ -1,0 +1,228 @@
+%% ---------------------------------------------------------------------------
+%% Copyright 2021 Javier Garea and contributors. A full list of
+%% contributors can be found at
+%%
+%%     https://github.com/javiergarea/pug/graphs/contributors
+%%
+%% This work is licensed under a Creative Commons Attribution-ShareAlike 4.0
+%% International License (https://creativecommons.org/licenses/by-sa/4.0/).
+%% ---------------------------------------------------------------------------
+\mode<presentation>
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\usetheme{metropolis}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% PACKAGE OPTIONS
+
+% Main Theme
+% \metroset{titleformat=smallcaps} % regular, smallcaps, allsmallcaps, allcaps
+% \metroset{titleformat plain=allcaps} % regular, smallcaps, allsmallcaps, allcaps
+
+% Inner Theme
+\metroset{sectionpage=none} % none, simple, progressbar
+\metroset{subsectionpage=none} % none, simple, progressbar
+
+% Outer Theme
+\metroset{numbering=fraction} % none, counter, fraction
+\metroset{progressbar=head} % none, head, frametitle, foot
+\makeatletter % temporarily defines »@« as a normal character to enable changes to internal LaTeX macros outside packages or classes
+\setlength{\metropolis@progressinheadfoot@linewidth}{2pt} % progressbar size
+\setlength{\metropolis@titleseparator@linewidth}{1pt} % progressbar size
+
+% Color Theme
+\metroset{block=fill} % transparent, fill
+\metroset{background=light} % dark, light
+
+% Font theme
+\metroset{titleformat title=smallcaps} % regular, smallcaps, allsmallcaps, allcaps
+\metroset{titleformat subtitle=smallcaps} % regular, smallcaps, allsmallcaps, allcaps
+\metroset{titleformat section=smallcaps} % regular, smallcaps, allsmallcaps, allcaps
+\metroset{titleformat frame=smallcaps} % regular, smallcaps, allsmallcaps, allcaps
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% COLOR CUSTOMIZATION
+% In this case we will use : https://coolors.co/d3d0cb-e7e5df-44bba4-e7bb41-243b4a
+\definecolor{indigo}{HTML}{243b4a}
+\definecolor{meatbrown}{HTML}{e7bb41}
+\definecolor{verdigris}{HTML}{44bba4}
+\definecolor{platinum}{HTML}{e7e5df}
+\definecolor{lightgray}{HTML}{d3d0cb}
+\definecolor{limagreen}{HTML}{4ACE16}
+
+% Three beamer colors: normal text (dark fg, light bg), alerted text (colored fg, should be visible against dark or light) and example text (colored fg, should be visible against dark or light).
+\setbeamercolor{normal text}{parent=palette primary}
+\setbeamercolor{alerted text}{fg=red, bg=white}
+\setbeamercolor{example text}{fg=limagreen, bg=white}
+
+% METROPOLIS specific colors
+\setbeamercolor{progress bar}{fg=verdigris, bg=lightgray}
+\setbeamercolor{title separator}{fg=verdigris!90!black}
+% \setbeamercolor{progress bar in head/foot}{fg=black, bg=white}
+% \setbeamercolor{progress bar in section page}{fg=black, bg=white}
+
+% Rest of Beamer colors
+\setbeamercolor*{structure}{fg=indigo}
+\setbeamercolor{section in toc}{fg=black,bg=white}
+\setbeamercolor*{palette primary}{fg=indigo, bg=white}
+\setbeamercolor*{palette secondary}{fg=meatbrown,bg=lightgray}
+\setbeamercolor*{palette tertiary}{bg=verdigris,fg=lighgray}
+\setbeamercolor*{palette quaternary}{fg=red,bg=lightgray}
+
+\setbeamercolor*{sidebar}{fg=blue,bg=gray!15!white}
+
+% \setbeamercolor*{palette sidebar primary}{fg=blue!10!black}
+% \setbeamercolor*{palette sidebar secondary}{fg=white}
+% \setbeamercolor*{palette sidebar tertiary}{fg=blue!50!black}
+% \setbeamercolor*{palette sidebar quaternary}{fg=gray!10!white}
+
+%\setbeamercolor*{titlelike}{parent=palette primary}
+% \setbeamercolor{titlelike}{parent=palette primary,fg=blue}
+\setbeamercolor{frametitle}{fg=white, bg=indigo}
+% \setbeamercolor{frametitle right}{bg=gray!60!white}
+\setbeamercolor{title}{fg=white, bg=indigo}
+% \setbeamercolor{block title}{bg=blue!20,fg=black}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% FONT CUSTOMIZATION
+\usepackage{fontspec}
+
+% Ubuntu font family
+% \setsansfont{Ubuntu}
+% \setmonofont{Ubuntu Mono}
+
+% Maximize readability
+\setsansfont[BoldFont={Fira Sans SemiBold}]{Fira Sans Book}
+\setmonofont{FiraMono-Regular}
+
+
+% Old style figures
+% \usefonttheme{professionalfonts} % required for mathspec
+% \usepackage{mathspec}
+% \setsansfont[BoldFont={Fira Sans},
+% Numbers={OldStyle}]{Fira Sans Light}
+% \setmathsfont(Digits)[Numbers={Lining, Proportional}]{Fira
+% Sans Light}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% TIPS & TRICKS
+
+% Backup slides (useful for Q/A)
+\usepackage{appendixnumberbeamer}
+\appendix % After final frame, before backup slides
+
+
+
+\setbeamertemplate{frame numbering}{
+	\ifbool{metropolis@standout}{}{
+		\insertframenumber\,/\,\inserttotalframenumber\kern1em\vskip2pt%
+	}
+}
+
+% Outline Frame at begin section
+\AtBeginSection[]
+{
+ \begin{frame}<beamer>[noframenumbering, plain]
+ \frametitle{Outline}
+ \tableofcontents[currentsection]
+ \end{frame}
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\usepackage{framed}
+\definecolor{shadecolor}{named}{indigo}
+
+
+\setbeamertemplate{title page}{
+    \begin{minipage}[c][\paperheight]{\textwidth}
+        \vfill%
+        {
+            \begin{shaded}
+                \vspace*{7pt}
+                \ifx\inserttitle\@empty\else\usebeamertemplate*{title}\fi
+                \ifx\insertsubtitle\@empty\else\usebeamertemplate*{subtitle}\fi
+                \vspace*{2pt}
+            \end{shaded}
+        }
+        {
+            \ifx\beamer@shortauthor\@empty\else\usebeamertemplate*{author}\fi
+            \ifx\insertdate\@empty\else\usebeamertemplate*{date}\fi
+        }
+        \begin{minipage}[t]{0.4\textwidth}
+            % \centering
+            \ifx\insertinstitute\@empty\else\usebeamertemplate*{institute}\fi
+        \end{minipage}
+        \begin{minipage}[t]{0.6\textwidth}
+            \ifx\inserttitlegraphic\@empty\else\usebeamertemplate*{title graphic}\fi
+        \end{minipage}
+        \vfill
+        \vspace*{1mm}
+    \end{minipage}
+}
+
+
+\setbeamertemplate{title}{
+%  \raggedright%  % <-- Comment here
+  \linespread{1.0}%
+  \inserttitle%
+  \par%
+  \vspace*{0.5em}
+}
+\setbeamertemplate{subtitle}{
+%  \raggedright%  % <-- Comment here
+  \insertsubtitle%
+  \par%
+  \vspace*{0.5em}
+}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\usepackage{datetime}
+\newdateformat{mydate}{\monthname[\THEMONTH], \THEYEAR}
+
+\newcommand{\titleframe}{\frame[noframenumbering, plain]{\titlepage}}
+
+\newcommand{\finalframe}{\frame[noframenumbering, plain]{
+    \begin{minipage}[c][\paperheight]{\textwidth}
+        \vfill%
+        {
+            \begin{shaded}
+                \vspace*{7pt}
+                \ifx\inserttitle\@empty\else\usebeamertemplate*{title}\fi
+                \ifx\insertsubtitle\@empty\else\usebeamertemplate*{subtitle}\fi
+                \vspace*{2pt}
+            \end{shaded}
+        }
+        {
+            \centering
+            \color{red}
+            \Large
+            \bfseries 
+            Thanks for your attention!\\
+            \vspace*{-14pt}
+        }
+        {
+            \ifx\beamer@shortauthor\@empty\else\usebeamertemplate*{author}\fi
+            \ifx\insertdate\@empty\else\usebeamertemplate*{date}\fi
+        }
+        \begin{minipage}[t]{0.4\textwidth}
+            % \centering
+            \ifx\insertinstitute\@empty\else\usebeamertemplate*{institute}\fi
+        \end{minipage}
+        \begin{minipage}[t]{0.6\textwidth}
+            \ifx\inserttitlegraphic\@empty\else\usebeamertemplate*{title graphic}\fi
+        \end{minipage}
+        \vfill
+        \vspace*{1mm}
+    \end{minipage}
+}}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% TOC
+\setbeamertemplate{section in toc}[square]
+%\setbeamertemplate{subsection in toc}[square]
+%\setbeamertemplate{section in toc}[sections numbered]
+%\setbeamertemplate{subsection in toc}[subsections numbered]
+%\setbeamertemplate{section in toc}[ball unnumbered]
+%\setbeamertemplate{subsection in toc}[ball unnumbered]
+
+
+\mode<all>
