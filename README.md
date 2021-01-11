@@ -1,11 +1,11 @@
 # Pug
 [![CC BY-SA 4.0][cc-by-sa-shield]][cc-by-sa]
 ---
-![](misc/pug_titlepage)
+![](misc/pug_titlepage.png)
 ---
-![](misc/pug_references)
+![](misc/pug_references.png)
 ---
-![](misc/pug_outline)
+![](misc/pug_outline.png)
 ---
 
 This work is licensed under a
