@@ -1,5 +1,12 @@
 # Pug
 [![CC BY-SA 4.0][cc-by-sa-shield]][cc-by-sa]
+---
+![](misc/pug_titlepage)
+---
+![](misc/pug_references)
+---
+![](misc/pug_outline)
+---
 
 This work is licensed under a
 [Creative Commons Attribution-ShareAlike 4.0 International License][cc-by-sa].
